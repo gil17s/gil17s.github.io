@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link
+            href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+            rel="stylesheet"
+        />
+        <link
+            rel="website icon"
+            href="BTW_LOGO.png"
+            title="BTW"
+            type="image/png"
+        />
+        <style>
+            body {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+                background-image: url("BTW_3.png");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                background-color: var(--body-color);
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0;
+                text-align: center;
+            }
+
+            body > ul {
+                list-style-type: none;
+                padding: 0;
+                text-align: center;
+                margin-top: 100px;
+            }
+
+            .tombol {
+                display: block;
+                width: 200px;
+                padding: 10px;
+                margin: 20px 0;
+                background-color: #007bff;
+                color: #fafdff;
+                text-align: center;
+                text-decoration: none;
+                border-radius: 5px;
+                transition: background-color 0.3s;
+            }
+
+            .tombol:hover {
+                background-color: #0056b3;
+            }
+
+            .judul {
+                margin-top: 10px;
+            }
+
+            @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                font-family: "Poppins", sans-serif;
+                transition: all 0.4s ease;
+            }
+
+            :root {
+                --body-color: #fafdff;
+                --nav-color: #821131;
+                --side-nav: #010718;
+                --text-color: #fafdff;
+            }
+
+            body.dark {
+                --body-color: #18191a;
+                --nav-color: #242526;
+                --side-nav: #242526;
+                --text-color: #ccc;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 70px;
+                width: 100%;
+                background-color: var(--nav-color);
+                z-index: 100;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            body.dark nav {
+                border: 1px solid #393838;
+            }
+
+            nav .nav-bar {
+                position: relative;
+                height: 100%;
+                max-width: 1000px;
+                width: 100%;
+                background-color: var(--nav-color);
+                margin: 0 auto;
+                padding: 0 30px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+
+            nav .nav-bar .sidebarOpen {
+                color: var(--text-color);
+                font-size: 25px;
+                padding: 5px;
+                cursor: pointer;
+                display: none;
+            }
+
+            nav .nav-bar .logo a {
+                font-size: 25px;
+                font-weight: 500;
+                color: var(--text-color);
+                text-decoration: none;
+            }
+
+            .menu .logo-toggle {
+                display: none;
+            }
+
+            .nav-bar .nav-links {
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-bar .nav-links li {
+                margin: 0 5px;
+                list-style: none;
+            }
+
+            .nav-links li a {
+                position: relative;
+                font-size: 17px;
+                font-weight: 400;
+                color: var(--text-color);
+                text-decoration: none;
+                padding: 10px;
+            }
+
+            .nav-links li a::before {
+                content: "";
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translateX(-50%);
+                height: 6px;
+                width: 6px;
+                border-radius: 50%;
+                background-color: var(--text-color);
+                opacity: 0;
+                transition: all 0.3s ease;
+            }
+
+            .nav-links li:hover a::before {
+                opacity: 1;
+            }
+
+            .dark-light {
+                height: 40px;
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 5px;
+            }
+
+            .dark-light i {
+                position: absolute;
+                color: var(--text-color);
+                font-size: 22px;
+                cursor: pointer;
+                transition: all 0.3s ease;
+            }
+
+            .dark-light i.sun {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .dark-light.active i.sun {
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .dark-light.active i.moon {
+                opacity: 0;
+                pointer-events: none;
+            }
+
+            .dark {
+                color: #fafdff;
+            }
+
+            @media (max-width: 790px) {
+                nav .nav-bar .sidebarOpen {
+                    display: block;
+                }
+                body {
+                    font-size: 14px;
+                }
+
+                h1 {
+                    font-size: 1rem;
+                    align-items: center;
+                }
+
+                .menu {
+                    position: fixed;
+                    height: 100%;
+                    width: 320px;
+                    left: -100%;
+                    top: 0;
+                    padding: 20px;
+                    background-color: var(--side-nav);
+                    z-index: 100;
+                    transition: all 0.4s ease;
+                }
+
+                nav.active .menu {
+                    left: -0%;
+                }
+
+                nav.active .nav-bar .navLogo a {
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                }
+
+                .menu .logo-toggle {
+                    display: block;
+                    width: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                }
+
+                .logo-toggle .siderbarClose {
+                    color: var(--text-color);
+                    font-size: 24px;
+                    cursor: pointer;
+                }
+
+                .nav-bar .nav-links {
+                    flex-direction: column;
+                    padding-top: 30px;
+                }
+
+                .nav-links li a {
+                    display: block;
+                    margin-top: 20px;
+                }
+            }
+            
+            footer {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+    background-color: transparent;
+}
+
+.kembali {
+    display: inline-block;
+    margin-left: 20px;
+}
+        </style>
+        <title>Tugas</title>
+    </head>
+    <body>
+        <nav>
+            <div class="nav-bar">
+                <i class="bx bx-menu sidebarOpen"></i>
+                <span class="logo navLogo"><a href="Halaman_Utama.html">Halaman Utama</a></span>
+
+                <div class="menu">
+                    <div class="logo-toggle">
+                        <span class="logo"><a href="#">HOME</a></span>
+                        <i class="bx bx-x siderbarClose"></i>
+                    </div>
+
+                    <ul class="nav-links">
+                        <li><a href="Praktek.html">Praktek</a></li>
+                        <li><a href="Tugas.html">Tugas</a></li>
+                        <li><a href="Tentang_saya.html">Tentang Saya</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="dark-light">
+                        <i class="bx bx-moon moon"></i>
+                        <i class="bx bx-sun sun"></i>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <ul>
+            <li>
+                <h1 class="judul">Pertemuan 3</h1>
+                <a class="tombol" href="Pertemuan_3/Tugas.html">TUGAS 1</a>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <h1 class="judul">Pertemuan 4</h1>
+                <a class="tombol" href="Pertemuan_4/Tugas web.html">TUGAS 1</a>
+            </li>
+        </ul>
+
+        <ul>
+            <li>
+                <h1 class="judul">Pertemuan 5</h1>
+                <a class="tombol" href="Halaman_Utama.html">TUGAS 1</a>
+            </li>
+        </ul>
+<footer>
+   <a class="tombol kembali" href="Halaman_Utama.html">kembali</a>
+</footer>
+        <script src="script.js"></script>
+    </body>
+</html>
